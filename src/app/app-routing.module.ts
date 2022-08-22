@@ -5,8 +5,13 @@ import { ROUTES } from './shared/core/constants';
 
 const routes: Routes = [
   {
+    path: '',
+    redirectTo: ROUTES.clientForm,
+    pathMatch: 'full'
+  },
+  {
     path: ROUTES.clientForm,
-    component: FormWizardComponent
+    loadChildren: () => import('./features/form-wizard/form-wizard.module').then(m => m.FormWizardModule)
   }
 ];
 

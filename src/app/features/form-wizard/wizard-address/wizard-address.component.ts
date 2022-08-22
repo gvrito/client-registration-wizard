@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { WizardStepBase } from 'src/app/shared/components/wizard-step-base';
 import { FormService } from 'src/app/shared/services/form.service';
 
 @Component({
@@ -7,15 +8,12 @@ import { FormService } from 'src/app/shared/services/form.service';
   templateUrl: './wizard-address.component.html',
   styleUrls: ['./wizard-address.component.scss']
 })
-export class WizardAddressComponent implements OnInit {
-  public form: FormGroup = new FormGroup({});
-
+export class WizardAddressComponent extends WizardStepBase{
   constructor(
-    private formService: FormService
-  ) { }
-
-  ngOnInit(): void {
-    this.form = this.formService.addressStepForm;
+    route: ActivatedRoute,
+    formService: FormService
+  ) {
+    super(route, formService);
   }
 
 }

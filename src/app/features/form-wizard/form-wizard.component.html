@@ -1,5 +1,14 @@
-<p>form-wizard works!</p>
-<button [routerLink]="ROUTES.address">Address</button>
-<button [routerLink]="ROUTES.client">Client</button>
-<button [routerLink]="ROUTES.identity">Identity</button>
-<router-outlet></router-outlet>
+<mat-card>
+    <mat-card-header>
+        <button [routerLink]="ROUTES.client" mat-button>Client</button>
+        <button [routerLink]="ROUTES.address" mat-button>Address</button>
+        <button [routerLink]="ROUTES.identity" mat-button>Identity</button>
+    </mat-card-header>
+    <mat-card-content>
+        <router-outlet></router-outlet>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-button *ngIf="showPrevious" (click)="onPreviousClick()">Previous Step</button>
+        <button mat-button *ngIf="showNext" (click)="onNextClick()">Next Step</button>
+    </mat-card-actions>
+</mat-card>

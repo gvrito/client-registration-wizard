@@ -1,1 +1,54 @@
-<p>wizard-client works!</p>
+<div formGroupName="form" class="form-vertical">
+    <div class="dual-input">
+        <mat-form-field>
+            <mat-label>Name:</mat-label>
+            <input matInput formControlName="name">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Last Name:</mat-label>
+            <input matInput formControlName="lastName">
+        </mat-form-field>
+    </div>
+
+    <mat-form-field>
+        <mat-label>Middle Name:</mat-label>
+        <input matInput formControlName="middleName">
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Date Of Birth:</mat-label>
+        <input matInput [matDatepicker]="picker" placeholder="Choose a date" formControlName="dateOfBirth">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Phone Number:</mat-label>
+        <input matInput formControlName="phone">
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Gender</mat-label>
+        <input matInput formControlName="gender">
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Client Group:</mat-label>
+        <mat-select formControlName="clientGroup">
+            <mat-option *ngFor="let group of dropdowns.clientGroup" [value]="group">
+                {{ group }}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Coordinator:</mat-label>
+        <mat-select formControlName="coordinator">
+            <mat-option *ngFor="let coordinator of dropdowns.coordinator" [value]="coordinator">
+                {{ coordinator }}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    
+    <mat-checkbox formControlName="noSms">Do not send me SMS</mat-checkbox>
+</div>

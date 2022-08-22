@@ -7,6 +7,13 @@ import { WizardAddressComponent } from './wizard-address/wizard-address.componen
 import { WizardClientComponent } from './wizard-client/wizard-client.component';
 import { WizardIdentityComponent } from './wizard-identity/wizard-identity.component';
 import { FormService } from 'src/app/shared/services/form.service';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 
 @NgModule({
@@ -14,17 +21,21 @@ import { FormService } from 'src/app/shared/services/form.service';
     FormWizardComponent,
     WizardAddressComponent,
     WizardClientComponent,
-    WizardIdentityComponent
+    WizardIdentityComponent,
   ],
   imports: [
     CommonModule,
-    FormWizardRoutingModule
+    FormWizardRoutingModule,
+    MatInputModule,
+    MatSelectModule,
+    MatCheckboxModule,
+    MatCardModule,
+    MatButtonModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   exports: [
     FormWizardComponent
-  ],
-  providers: [
-    FormService
   ]
 })
 export class FormWizardModule { }
