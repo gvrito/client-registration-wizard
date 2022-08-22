@@ -6,6 +6,7 @@ import { FormWizardComponent } from './form-wizard.component';
 import { WizardAddressComponent } from './wizard-address/wizard-address.component';
 import { WizardClientComponent } from './wizard-client/wizard-client.component';
 import { WizardIdentityComponent } from './wizard-identity/wizard-identity.component';
+import { FormService } from 'src/app/shared/services/form.service';
 
 
 @NgModule({
@@ -21,6 +22,9 @@ import { WizardIdentityComponent } from './wizard-identity/wizard-identity.compo
   ],
   exports: [
     FormWizardComponent
+  ],
+  providers: [
+    FormService
   ]
 })
 export class FormWizardModule { }

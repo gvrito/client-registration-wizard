@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ROUTES } from 'src/app/shared/core/constants';
+import { FormService } from 'src/app/shared/services/form.service';
 
 @Component({
   selector: 'app-form-wizard',
@@ -9,9 +10,18 @@ import { ROUTES } from 'src/app/shared/core/constants';
 export class FormWizardComponent implements OnInit {
   public ROUTES = ROUTES;
 
-  constructor() { }
+  constructor(
+    private formService: FormService
+  ) { }
 
   ngOnInit(): void {
+    this.initForms();
+  }
+
+  private initForms(): void {
+    this.formService.constructAddressForm();
+    this.formService.constructClientForm();
+    this.formService.constructIdentityForm();
   }
 
 }
