@@ -14,6 +14,11 @@ const routes: Routes = [
     component: FormWizardComponent,
     children: [
       {
+        path: '',
+        redirectTo: ROUTES.client,
+        pathMatch: 'full'
+      },
+      {
         path: ROUTES.client,
         component: WizardClientComponent
       },
