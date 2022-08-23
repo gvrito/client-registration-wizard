@@ -33,9 +33,6 @@
         <mat-error *ngIf="form.get('dateOfIssue')?.errors?.required">Date is required</mat-error>
     </mat-form-field>
 
-    <mat-form-field>
-        <mat-label>Series:</mat-label>
-        <input matInput formControlName="series">
-    </mat-form-field>
+    <app-file-upload></app-file-upload>
 
 </div>
