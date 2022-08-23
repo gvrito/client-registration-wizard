@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ROUTES, WIZARD_STEPS } from '../core/constants';
 
@@ -8,13 +8,13 @@ import { ROUTES, WIZARD_STEPS } from '../core/constants';
 })
 export class FormService {
   // tslint:disable: variable-name
-  private _clientStepForm: FormGroup = new FormGroup({});
-  private _addressStepForm: FormGroup = new FormGroup({});
-  private _identityStepForm: FormGroup = new FormGroup({});
+  private _clientStepForm: UntypedFormGroup = new UntypedFormGroup({});
+  private _addressStepForm: UntypedFormGroup = new UntypedFormGroup({});
+  private _identityStepForm: UntypedFormGroup = new UntypedFormGroup({});
   public currentStep = WIZARD_STEPS.Client;
 
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private router: Router,
   ) {
     this.constructAddressForm();
@@ -88,15 +88,15 @@ export class FormService {
     }
   }
 
-  public get clientStepForm(): FormGroup {
+  public get clientStepForm(): UntypedFormGroup {
     return this._clientStepForm;
   }
 
-  public get addressStepForm(): FormGroup {
+  public get addressStepForm(): UntypedFormGroup {
     return this._addressStepForm;
   }
 
-  public get identityStepForm(): FormGroup {
+  public get identityStepForm(): UntypedFormGroup {
     return this._identityStepForm;
   }
 

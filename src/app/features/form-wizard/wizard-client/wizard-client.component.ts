@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 import { DROPDOWNS, LIMITS } from 'src/app/shared/core/constants';
 import { FormService } from 'src/app/shared/services/form.service';
 
@@ -9,7 +9,7 @@ import { FormService } from 'src/app/shared/services/form.service';
   styleUrls: ['./wizard-client.component.scss']
 })
 export class WizardClientComponent implements OnInit {
-  public form: FormGroup = new FormGroup({});
+  public form: UntypedFormGroup = new UntypedFormGroup({});
   public dropdowns = DROPDOWNS;
   public LIMITS = LIMITS;
 

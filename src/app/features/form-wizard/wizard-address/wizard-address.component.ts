@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 import { DROPDOWNS } from 'src/app/shared/core/constants';
 import { FormService } from 'src/app/shared/services/form.service';
 
@@ -9,7 +9,7 @@ import { FormService } from 'src/app/shared/services/form.service';
   styleUrls: ['./wizard-address.component.scss']
 })
 export class WizardAddressComponent implements OnInit {
-  public form: FormGroup = new FormGroup({});
+  public form: UntypedFormGroup = new UntypedFormGroup({});
   public dropdowns = DROPDOWNS;
 
   constructor(

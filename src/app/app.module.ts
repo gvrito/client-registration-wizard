@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormWizardModule } from './features/form-wizard/form-wizard.module';
-import { FormBuilder } from '@angular/forms';
+import { UntypedFormBuilder } from '@angular/forms';
 import { PageNotFoundComponent } from './features/page-not-found/page-not-found.component';
 
 @NgModule({
@@ -19,7 +19,7 @@ import { PageNotFoundComponent } from './features/page-not-found/page-not-found.
     BrowserAnimationsModule,
     FormWizardModule
   ],
-  providers: [FormBuilder],
+  providers: [UntypedFormBuilder],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

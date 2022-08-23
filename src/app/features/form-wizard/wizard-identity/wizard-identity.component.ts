@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { DROPDOWNS } from 'src/app/shared/core/constants';
 import { FormService } from 'src/app/shared/services/form.service';
@@ -10,7 +10,7 @@ import { FormService } from 'src/app/shared/services/form.service';
   styleUrls: ['./wizard-identity.component.scss']
 })
 export class WizardIdentityComponent implements OnInit {
-  public form: FormGroup = new FormGroup({});
+  public form: UntypedFormGroup = new UntypedFormGroup({});
   public dropdowns = DROPDOWNS;
 
   constructor(
