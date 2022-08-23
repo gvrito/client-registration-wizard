@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { WizardStepBase } from 'src/app/shared/components/wizard-step-base';
+import { DROPDOWNS } from 'src/app/shared/core/constants';
 import { FormService } from 'src/app/shared/services/form.service';
 
 @Component({
@@ -8,12 +9,15 @@ import { FormService } from 'src/app/shared/services/form.service';
   templateUrl: './wizard-identity.component.html',
   styleUrls: ['./wizard-identity.component.scss']
 })
-export class WizardIdentityComponent extends WizardStepBase{
-  constructor(
-    route: ActivatedRoute,
-    formService: FormService
-  ) {
-    super(route, formService);
-  }
+export class WizardIdentityComponent implements OnInit {
+  public form: FormGroup = new FormGroup({});
+  public dropdowns = DROPDOWNS;
 
+  constructor(
+    private formService: FormService
+  ) { }
+
+  ngOnInit(): void {
+    this.form = this.formService.identityStepForm;
+  }
 }

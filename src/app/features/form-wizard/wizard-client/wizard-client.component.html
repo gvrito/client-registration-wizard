@@ -1,15 +1,15 @@
-<div formGroupName="form" class="form-vertical">
-    <div class="dual-input">
-        <mat-form-field>
-            <mat-label>Name:</mat-label>
-            <input matInput formControlName="name">
-        </mat-form-field>
-        <mat-form-field>
-            <mat-label>Last Name:</mat-label>
-            <input matInput formControlName="lastName">
-        </mat-form-field>
-    </div>
-
+<div [formGroup]="form" class="form-vertical">
+    <mat-form-field>
+        <mat-label>Name:</mat-label>
+        <input matInput formControlName="name">
+        <mat-error *ngIf="form.get('name')?.errors?.required">Name is required</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Last Name:</mat-label>
+        <input matInput formControlName="lastName">
+        <mat-error *ngIf="form.get('lastName')?.errors?.required">Last Name is required</mat-error>
+    </mat-form-field>
+    
     <mat-form-field>
         <mat-label>Middle Name:</mat-label>
         <input matInput formControlName="middleName">
@@ -20,11 +20,13 @@
         <input matInput [matDatepicker]="picker" placeholder="Choose a date" formControlName="dateOfBirth">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
+        <mat-error *ngIf="form.get('dateOfBirth')?.errors?.required">Date is required</mat-error>
     </mat-form-field>
 
     <mat-form-field>
         <mat-label>Phone Number:</mat-label>
-        <input matInput formControlName="phone">
+        <input matInput formControlName="phone" [maxLength]="LIMITS.phone">
+        <mat-error *ngIf="form.get('phone')?.errors?.required">Phone is required</mat-error>
     </mat-form-field>
 
     <mat-form-field>
@@ -39,6 +41,7 @@
                 {{ group }}
             </mat-option>
         </mat-select>
+        <mat-error *ngIf="form.get('clientGroup')?.errors?.required">Client Group is required</mat-error>
     </mat-form-field>
 
     <mat-form-field>

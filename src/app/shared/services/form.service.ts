@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { ROUTES, WIZARD_STEPS } from '../core/constants';
 
 @Injectable({
@@ -16,25 +16,29 @@ export class FormService {
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private route: ActivatedRoute
-  ) { }
+  ) {
+    this.constructAddressForm();
+    this.constructClientForm();
+    this.constructIdentityForm();
+  }
 
   public constructClientForm(): void {
     this._clientStepForm = this.fb.group({
       lastName: ['', { validators: [Validators.required] }],
       name: ['', { validators: [Validators.required] }],
-      middleName: ['', {}],
+      middleName: [''],
       dateOfBirth: [null, { validators: [Validators.required] }],
       phone: [null, { validators: [Validators.required, Validators.maxLength(11)] }],
-      gender: ['', {}],
+      gender: [''],
       clientGroup: ['', { validators: [Validators.required] }],
-      coordinator: ['', {}],
-      noSms: [false, {}]
+      coordinator: [''],
+      noSms: [false]
     });
   }
 
   public constructAddressForm(): void {
     this._addressStepForm = this.fb.group({
+      index: [''],
       country: ['', { validators: [Validators.required] }],
       area: [''],
       city: ['', { validators: [Validators.required] }],
@@ -58,13 +62,13 @@ export class FormService {
     switch (this.currentStep) {
       case WIZARD_STEPS.Client:
         if (this.canActivateAddress) {
-          this.router.navigate([ROUTES.address], { relativeTo: this.route });
+          this.router.navigate([ROUTES.clientForm, ROUTES.address]);
           this.currentStep = WIZARD_STEPS.Address;
         }
         break;
       case WIZARD_STEPS.Address:
         if (this.canActivateIdentity) {
-          this.router.navigate([ROUTES.identity], { relativeTo: this.route });
+          this.router.navigate([ROUTES.clientForm, ROUTES.identity]);
           this.currentStep = WIZARD_STEPS.Identity;
         }
         break;
@@ -74,11 +78,11 @@ export class FormService {
   public prevStep(): void {
     switch (this.currentStep) {
       case WIZARD_STEPS.Address:
-        this.router.navigate([ROUTES.client], { relativeTo: this.route });
+        this.router.navigate([ROUTES.clientForm, ROUTES.client]);
         this.currentStep = WIZARD_STEPS.Client;
         break;
       case WIZARD_STEPS.Identity:
-        this.router.navigate([ROUTES.address], { relativeTo: this.route });
+        this.router.navigate([ROUTES.clientForm, ROUTES.address]);
         this.currentStep = WIZARD_STEPS.Address;
         break;
     }
@@ -97,11 +101,13 @@ export class FormService {
   }
 
   public get canActivateAddress(): boolean {
-    return this.clientStepForm.valid;
+    // return this.clientStepForm.valid;
+    return true;
   }
 
   public get canActivateIdentity(): boolean {
-    return this.addressStepForm.valid;
+    // return this.addressStepForm.valid;
+    return true;
   }
 
 }

@@ -52,3 +52,6 @@ export enum WIZARD_STEPS {
     Address = 'address',
     Identity = 'identity'
 }
+export const LIMITS = {
+    phone: 11
+};

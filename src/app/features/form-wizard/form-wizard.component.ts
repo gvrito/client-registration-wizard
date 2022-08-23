@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component } from '@angular/core';
 import { ROUTES, WIZARD_STEPS } from 'src/app/shared/core/constants';
 import { FormService } from 'src/app/shared/services/form.service';
 
@@ -8,25 +7,13 @@ import { FormService } from 'src/app/shared/services/form.service';
   templateUrl: './form-wizard.component.html',
   styleUrls: ['./form-wizard.component.scss']
 })
-export class FormWizardComponent implements OnInit {
+export class FormWizardComponent {
   public ROUTES = ROUTES;
 
   constructor(
-    private formService: FormService,
-    private router: Router,
-    private route: ActivatedRoute
+    private formService: FormService
   ) { }
 
-  ngOnInit(): void {
-    this.initForms();
-    this.router.navigate([ROUTES.client], { relativeTo: this.route });
-  }
-
-  private initForms(): void {
-    this.formService.constructAddressForm();
-    this.formService.constructClientForm();
-    this.formService.constructIdentityForm();
-  }
 
   public onNextClick(): void {
     if (this.showNext) {

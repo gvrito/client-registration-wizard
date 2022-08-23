@@ -1,3 +1,41 @@
-<div formGroupName="form">
-    
+<div [formGroup]="form" class="form-vertical">
+    <mat-form-field>
+        <mat-label>Index:</mat-label>
+        <input matInput formControlName="index">
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Country:</mat-label>
+        <mat-select formControlName="country">
+            <mat-option *ngFor="let country of dropdowns.countries" [value]="country">
+                {{ country }}
+            </mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.get('country')?.errors?.required">Country is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>City:</mat-label>
+        <mat-select formControlName="city">
+            <mat-option *ngFor="let city of dropdowns.cities" [value]="city">
+                {{ city }}
+            </mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.get('city')?.errors?.required">City is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Area:</mat-label>
+        <input matInput formControlName="area">
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Street:</mat-label>
+        <input matInput formControlName="street">
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>House:</mat-label>
+        <input matInput formControlName="house">
+    </mat-form-field>
 </div>
