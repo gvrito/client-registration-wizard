@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormWizardModule } from './features/form-wizard/form-wizard.module';
 import { UntypedFormBuilder } from '@angular/forms';
 import { PageNotFoundComponent } from './features/page-not-found/page-not-found.component';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { PageNotFoundComponent } from './features/page-not-found/page-not-found.
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    FormWizardModule
+    FormWizardModule,
+    ToastrModule.forRoot(),
   ],
   providers: [UntypedFormBuilder],
   bootstrap: [AppComponent]

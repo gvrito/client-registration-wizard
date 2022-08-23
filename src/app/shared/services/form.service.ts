@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { ROUTES, WIZARD_STEPS } from '../core/constants';
 import { FileUploadService } from './file-upload.service';
 
@@ -17,7 +18,8 @@ export class FormService {
   constructor(
     private fb: UntypedFormBuilder,
     private router: Router,
-    private upload: FileUploadService
+    private upload: FileUploadService,
+    private toastr: ToastrService
   ) {
     this.constructAddressForm();
     this.constructClientForm();
@@ -102,6 +104,7 @@ export class FormService {
         fileAttachment: this.upload.uploadedFile,
         clientGroup: this.clientStepForm.value.clientGroup.join(', ')
       };
+      this.toastr.success('Client successfully created');
       this.router.navigate([ROUTES.clientInfo], { state: data});
     }
   }
