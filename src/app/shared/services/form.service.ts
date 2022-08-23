@@ -101,13 +101,11 @@ export class FormService {
   }
 
   public get canActivateAddress(): boolean {
-    // return this.clientStepForm.valid;
-    return true;
+    return this.clientStepForm.valid;
   }
 
   public get canActivateIdentity(): boolean {
-    // return this.addressStepForm.valid;
-    return true;
+    return this.addressStepForm.valid;
   }
 
 }

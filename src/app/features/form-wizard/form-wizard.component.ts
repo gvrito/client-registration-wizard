@@ -35,4 +35,8 @@ export class FormWizardComponent {
     return this.formService.currentStep !== WIZARD_STEPS.Identity;
   }
 
+  public get showFinal(): boolean {
+    return this.formService.currentStep === WIZARD_STEPS.Identity;
+  }
+
 }
