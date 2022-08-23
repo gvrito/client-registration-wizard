@@ -1,0 +1,16 @@
+<mat-card>
+  <ng-container *ngFor="let key of Object.keys(userData)">
+    <div class="row" *ngIf="userData[key] && key !== 'navigationId'">
+      <div class="col">
+        <h4>{{ keyToText[key] }}</h4>
+      </div>
+      <div class="col">
+        <ng-container *ngIf="key == 'fileAttachment' || key == 'dateOfBirth' || key == 'dateOfIssue'; else regularSpan">
+            <ng-container *ngIf="key == 'fileAttachment'; else dateSpan">{{ userData[key].name }}</ng-container>
+            <ng-template #dateSpan>{{ userData[key] | date }}</ng-template>
+        </ng-container>
+        <ng-template #regularSpan>{{ userData[key] }}</ng-template>
+      </div>
+    </div>
+  </ng-container>
+</mat-card>

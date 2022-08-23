@@ -27,6 +27,12 @@ export class FormWizardComponent {
     }
   }
 
+  public onFinalClick(): void {
+    if (this.showFinal) {
+      this.formService.createClient();
+    }
+  }
+
   public get showPrevious(): boolean {
     return this.formService.currentStep !== WIZARD_STEPS.Client;
   }

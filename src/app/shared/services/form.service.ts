@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ROUTES, WIZARD_STEPS } from '../core/constants';
+import { FileUploadService } from './file-upload.service';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,7 @@ export class FormService {
   constructor(
     private fb: UntypedFormBuilder,
     private router: Router,
+    private upload: FileUploadService
   ) {
     this.constructAddressForm();
     this.constructClientForm();
@@ -85,6 +87,19 @@ export class FormService {
         this.router.navigate([ROUTES.clientForm, ROUTES.address]);
         this.currentStep = WIZARD_STEPS.Address;
         break;
+    }
+  }
+
+  public createClient(): void {
+    if (this.addressStepForm.valid && this.clientStepForm.valid && this.identityStepForm.valid) {
+      const data = {
+        ...this.clientStepForm.value,
+        ...this.addressStepForm.value,
+        ...this.identityStepForm.value,
+        fileAttachment: this.upload.uploadedFile,
+        clientGroup: this.clientStepForm.value.clientGroup.join(', ')
+      };
+      this.router.navigate([ROUTES.clientInfo], { state: data});
     }
   }
 

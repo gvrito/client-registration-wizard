@@ -3,7 +3,7 @@ export const ROUTES = {
     client: 'client',
     address: 'address',
     identity: 'identity',
-    createdClient: 'created-client'
+    clientInfo: 'client-info',
 };
 export const DROPDOWNS = {
     clientGroup: [
@@ -54,4 +54,27 @@ export enum WIZARD_STEPS {
 }
 export const LIMITS = {
     phone: 11
+};
+export const keyToText = {
+    name: 'Name:',
+    lastName: 'Last Name:',
+    middleName: 'Middle Name:',
+    dateOfBirth: 'Date of birth:',
+    phone: 'Phone:',
+    gender: 'Gender:',
+    clientGroup: 'Client Group:',
+    coordinator: 'Coordinator:',
+    noSms: 'Don\'t send me SMS',
+    index: 'Index:',
+    country: 'Country: ',
+    area: 'Area:',
+    city: 'City:',
+    street: 'Street:',
+    house: 'House:',
+    documentType: 'Document Type:',
+    series: 'Series:',
+    number: 'Number:',
+    issuedBy: 'Issued By:',
+    dateOfIssue: 'Date of issue:',
+    fileAttachment: 'File Attachment:'
 };

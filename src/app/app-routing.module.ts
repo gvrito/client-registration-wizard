@@ -14,6 +14,10 @@ const routes: Routes = [
     loadChildren: () => import('./features/form-wizard/form-wizard.module').then(m => m.FormWizardModule)
   },
   {
+    path: ROUTES.clientInfo,
+    loadChildren: () => import('./features/client-info/client-info.module').then(m => m.ClientInfoModule)
+  },
+  {
     path: '**',
     component: PageNotFoundComponent
   },

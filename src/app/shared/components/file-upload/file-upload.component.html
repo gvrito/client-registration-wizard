@@ -7,7 +7,7 @@
           <button
             mat-flat-button
             color="primary"
-            [disabled]="!currentFile"
+            [disabled]="!currentFile || uploading"
             (click)="upload()"
           >
             Upload

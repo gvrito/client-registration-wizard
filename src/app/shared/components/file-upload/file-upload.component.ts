@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { finalize } from 'rxjs/operators';
 import { FileUploadService } from '../../services/file-upload.service';
 
 @Component({
@@ -9,6 +10,7 @@ import { FileUploadService } from '../../services/file-upload.service';
 export class FileUploadComponent {
   currentFile?: File;
   fileName = 'Select File';
+  uploading = false;
   constructor(
     private uploadService: FileUploadService
   ) { }
@@ -25,7 +27,14 @@ export class FileUploadComponent {
 
   upload(): void {
     if (this.currentFile) {
-      this.uploadService.upload(this.currentFile).subscribe();
+      this.uploading = true;
+      this.uploadService.upload(this.currentFile)
+      .pipe(
+        finalize(() => {
+          this.uploading = false;
+        })
+      )
+      .subscribe();
     }
   }
 
