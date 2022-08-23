@@ -33,6 +33,18 @@ export class FormWizardComponent {
     }
   }
 
+  public get isClientValid(): boolean {
+    return this.formService.clientStepForm.valid;
+  }
+
+  public get isAddressValid(): boolean {
+    return this.formService.addressStepForm.valid;
+  }
+
+  public get isIdentityValid(): boolean {
+    return this.formService.identityStepForm.valid;
+  }
+
   public get showPrevious(): boolean {
     return this.formService.currentStep !== WIZARD_STEPS.Client;
   }

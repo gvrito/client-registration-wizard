@@ -1,8 +1,8 @@
 <mat-card>
     <mat-card-header>
-        <button [routerLink]="ROUTES.client" mat-button>Client</button>
-        <button [routerLink]="ROUTES.address" mat-button>Address</button>
-        <button [routerLink]="ROUTES.identity" mat-button>Identity</button>
+        <button [routerLink]="ROUTES.client" [routerLinkActive]="'active'" mat-button [ngClass]="{ 'valid': isClientValid }"><span>1</span>Client</button>
+        <button [routerLink]="ROUTES.address" [routerLinkActive]="'active'" mat-button [ngClass]="{ 'valid': isAddressValid }"><span>2</span>Address</button>
+        <button [routerLink]="ROUTES.identity" [routerLinkActive]="'active'" mat-button [ngClass]="{ 'valid': isIdentityValid}"><span>3</span>Identity</button>
     </mat-card-header>
     <mat-card-content>
         <router-outlet></router-outlet>

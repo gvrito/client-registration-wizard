@@ -63,12 +63,14 @@ export class FormService {
   public nextStep(): void {
     switch (this.currentStep) {
       case WIZARD_STEPS.Client:
+        this.clientStepForm.markAllAsTouched();
         if (this.canActivateAddress) {
           this.router.navigate([ROUTES.clientForm, ROUTES.address]);
           this.currentStep = WIZARD_STEPS.Address;
         }
         break;
       case WIZARD_STEPS.Address:
+        this.addressStepForm.markAllAsTouched();
         if (this.canActivateIdentity) {
           this.router.navigate([ROUTES.clientForm, ROUTES.identity]);
           this.currentStep = WIZARD_STEPS.Identity;
@@ -91,6 +93,7 @@ export class FormService {
   }
 
   public createClient(): void {
+    this.identityStepForm.markAllAsTouched();
     if (this.addressStepForm.valid && this.clientStepForm.valid && this.identityStepForm.valid) {
       const data = {
         ...this.clientStepForm.value,

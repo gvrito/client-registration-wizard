@@ -1,0 +1,27 @@
+::ng-deep {
+    .mat-card-header {
+        justify-content: space-between;
+        .mat-card-header-text {
+            display: none;
+        }
+    }
+}
+button {
+    span {
+        padding: 3px 7px;
+        border-radius: 50%;
+        background-color: red;
+        margin-right: 5px;
+    }
+    &.active {
+        font-weight: bold;        
+        span {
+            background-color: #0d904f;
+        }
+    }
+    &.valid {
+        span {
+            background-color: #0d904f;
+        }
+    }
+}
